@@ -1,4 +1,14 @@
 import apwidgets.*;
+import oscP5.*;
+import netP5.*;
+import android.os.AsyncTask;
+import java.util.ArrayList;
+import android.view.MotionEvent;
+
+OscP5 oscP5;
+
+NetAddress myRemoteLocation;                            
+String serverIP = "10.0.0.100"; 
 
 APWidgetContainer widgetContainer; 
 APButton button1;
@@ -24,6 +34,8 @@ void setup(){
   
   orientation(PORTRAIT);
   background(0);
+  
+  oscP5 = new OscP5(this, 12005);
   
   widgetContainer = new APWidgetContainer(this); //create new container for widgets
   button1 = new APButton(20, 20, 100, 70, "Start\r\nSystem"); 
@@ -98,6 +110,16 @@ void onClickWidget(APWidget widget){
   if(widget == overrideToggle1){ //if it was button1 that was clicked
     if(overrideToggle1.isChecked()){ // Turn off all other buttons and set this focused
       // TODO SEND OSC
+      try {
+        OscMessage message = new OscMessage("/test");
+        message.add(123); /* add an int to the osc message */
+        /* send the message */
+        oscP5.send(message, new NetAddress(serverIP, 12000));
+        println("Sending: " + message.addrPattern());
+      } 
+      catch (ClassCastException e) {
+      }
+      
       overrideToggle2.setChecked(false);
       overrideToggle3.setChecked(false);
       overrideToggle4.setChecked(false);
@@ -280,4 +302,34 @@ void onClickWidget(APWidget widget){
     }
   }
   
+}
+
+private class SendOSCTask extends AsyncTask<OscMessage, Void, String> {
+  protected String doInBackground(OscMessage... Messages) {
+    for (OscMessage message : Messages) {
+
+      oscP5.send(message, new NetAddress(serverIP, 12000));
+      println("Sending: " + message.addrPattern());
+    }
+
+    return "done";
+  }
+  protected void onProgressUpdate() {
+    // setProgressPercent(progress[0]);
+  }
+
+  protected void onPostExecute() {
+    // showDialog("Downloaded " + result + " bytes");
+  }
+}
+
+void oscEvent(OscMessage theOscMessage) {
+  if (theOscMessage.checkAddrPattern("/scene/change")==true) {
+    //int scene = theOscMessage.get(0).intValue();
+    //tabStrip.switchToTab(scene);
+  }
+ // println("ass");
+  //pass to active tab
+  //tabStrip.getActivePanel().oscReceive(theOscMessage);
+  //shipControls.oscReceive(theOscMessage);
 }
