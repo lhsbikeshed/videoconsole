@@ -48,10 +48,10 @@ void setup(){
   widgetContainer.addWidget(button4);
   
   stroke(255);
-  line(0, 100, 600, 100);
+  line(0, 100, 480, 100);
   
   stroke(255);
-  line(0, 495, 600, 495);
+  line(0, 495, 480, 495);
   
   textSize(20);
   text("Override Focus", 160, 515);
@@ -407,6 +407,26 @@ void onClickWidget(APWidget widget){
       m.add(0);
       new SendOSCTask().execute(m);
     }
+  }else if(widget == button1){ //if it was button1 that was clicked
+    // TODO SEND OSC
+    OscMessage m = new OscMessage("/video/system");
+    m.add(1);
+    new SendOSCTask().execute(m);
+  }else if(widget == button2){ //if it was button1 that was clicked
+    // TODO SEND OSC
+    OscMessage m = new OscMessage("/video/system");
+    m.add(0);
+    new SendOSCTask().execute(m);
+  }else if(widget == button3){ //if it was button1 that was clicked
+    // TODO SEND OSC
+    OscMessage m = new OscMessage("/video/playSequence");
+    m.add(1);
+    new SendOSCTask().execute(m);
+  }else if(widget == button4){ //if it was button1 that was clicked
+    // TODO SEND OSC
+    OscMessage m = new OscMessage("/video/playSequence");
+    m.add(2);
+    new SendOSCTask().execute(m);
   }
   
 }
