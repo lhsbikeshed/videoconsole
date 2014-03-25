@@ -110,15 +110,9 @@ void onClickWidget(APWidget widget){
   if(widget == overrideToggle1){ //if it was button1 that was clicked
     if(overrideToggle1.isChecked()){ // Turn off all other buttons and set this focused
       // TODO SEND OSC
-      try {
-        OscMessage message = new OscMessage("/test");
-        message.add(123); /* add an int to the osc message */
-        /* send the message */
-        oscP5.send(message, new NetAddress(serverIP, 12000));
-        println("Sending: " + message.addrPattern());
-      } 
-      catch (ClassCastException e) {
-      }
+      OscMessage m = new OscMessage("/video/focus");
+      m.add(1);
+      new SendOSCTask().execute(m);
       
       overrideToggle2.setChecked(false);
       overrideToggle3.setChecked(false);
@@ -133,11 +127,18 @@ void onClickWidget(APWidget widget){
       overrideToggle12.setChecked(false);
     }
     else{ // Button is off, send auto camera switching
-      // TODO SEND OSC 
+      // TODO SEND OSC
+      OscMessage m = new OscMessage("/video/focus");
+      m.add(0);
+      new SendOSCTask().execute(m);
     }
   }else if(widget == overrideToggle2){ //if it was button1 that was clicked
     if(overrideToggle2.isChecked()){ // Turn off all other buttons and set this focused
       // TODO SEND OSC
+      OscMessage m = new OscMessage("/video/focus");
+      m.add(2);
+      new SendOSCTask().execute(m);
+      
       overrideToggle1.setChecked(false);
       overrideToggle3.setChecked(false);
       overrideToggle4.setChecked(false);
@@ -149,10 +150,20 @@ void onClickWidget(APWidget widget){
       overrideToggle10.setChecked(false);
       overrideToggle11.setChecked(false);
       overrideToggle12.setChecked(false);
+    }
+    else{ // Button is off, send auto camera switching
+      // TODO SEND OSC
+      OscMessage m = new OscMessage("/video/focus");
+      m.add(0);
+      new SendOSCTask().execute(m);
     }
   }else if(widget == overrideToggle3){ //if it was button1 that was clicked
     if(overrideToggle3.isChecked()){ // Turn off all other buttons and set this focused
       // TODO SEND OSC
+      OscMessage m = new OscMessage("/video/focus");
+      m.add(3);
+      new SendOSCTask().execute(m);
+      
       overrideToggle1.setChecked(false);
       overrideToggle2.setChecked(false);
       overrideToggle4.setChecked(false);
@@ -164,10 +175,20 @@ void onClickWidget(APWidget widget){
       overrideToggle10.setChecked(false);
       overrideToggle11.setChecked(false);
       overrideToggle12.setChecked(false);
+    }
+    else{ // Button is off, send auto camera switching
+      // TODO SEND OSC
+      OscMessage m = new OscMessage("/video/focus");
+      m.add(0);
+      new SendOSCTask().execute(m);
     }
   }else if(widget == overrideToggle4){ //if it was button1 that was clicked
     if(overrideToggle4.isChecked()){ // Turn off all other buttons and set this focused
       // TODO SEND OSC
+      OscMessage m = new OscMessage("/video/focus");
+      m.add(4);
+      new SendOSCTask().execute(m);
+      
       overrideToggle1.setChecked(false);
       overrideToggle2.setChecked(false);
       overrideToggle3.setChecked(false);
@@ -179,10 +200,20 @@ void onClickWidget(APWidget widget){
       overrideToggle10.setChecked(false);
       overrideToggle11.setChecked(false);
       overrideToggle12.setChecked(false);
+    }
+    else{ // Button is off, send auto camera switching
+      // TODO SEND OSC
+      OscMessage m = new OscMessage("/video/focus");
+      m.add(0);
+      new SendOSCTask().execute(m);
     }
   }else if(widget == overrideToggle5){ //if it was button1 that was clicked
     if(overrideToggle5.isChecked()){ // Turn off all other buttons and set this focused
       // TODO SEND OSC
+      OscMessage m = new OscMessage("/video/focus");
+      m.add(5);
+      new SendOSCTask().execute(m);
+      
       overrideToggle1.setChecked(false);
       overrideToggle2.setChecked(false);
       overrideToggle3.setChecked(false);
@@ -194,10 +225,20 @@ void onClickWidget(APWidget widget){
       overrideToggle10.setChecked(false);
       overrideToggle11.setChecked(false);
       overrideToggle12.setChecked(false);
+    }
+    else{ // Button is off, send auto camera switching
+      // TODO SEND OSC
+      OscMessage m = new OscMessage("/video/focus");
+      m.add(0);
+      new SendOSCTask().execute(m);
     }
   }else if(widget == overrideToggle6){ //if it was button1 that was clicked
     if(overrideToggle6.isChecked()){ // Turn off all other buttons and set this focused
       // TODO SEND OSC
+      OscMessage m = new OscMessage("/video/focus");
+      m.add(6);
+      new SendOSCTask().execute(m);
+      
       overrideToggle1.setChecked(false);
       overrideToggle2.setChecked(false);
       overrideToggle3.setChecked(false);
@@ -209,10 +250,20 @@ void onClickWidget(APWidget widget){
       overrideToggle10.setChecked(false);
       overrideToggle11.setChecked(false);
       overrideToggle12.setChecked(false);
+    }
+    else{ // Button is off, send auto camera switching
+      // TODO SEND OSC
+      OscMessage m = new OscMessage("/video/focus");
+      m.add(0);
+      new SendOSCTask().execute(m);
     }
   }else if(widget == overrideToggle7){ //if it was button1 that was clicked
     if(overrideToggle7.isChecked()){ // Turn off all other buttons and set this focused
       // TODO SEND OSC
+      OscMessage m = new OscMessage("/video/focus");
+      m.add(7);
+      new SendOSCTask().execute(m);
+      
       overrideToggle1.setChecked(false);
       overrideToggle2.setChecked(false);
       overrideToggle3.setChecked(false);
@@ -224,10 +275,20 @@ void onClickWidget(APWidget widget){
       overrideToggle10.setChecked(false);
       overrideToggle11.setChecked(false);
       overrideToggle12.setChecked(false);
+    }
+    else{ // Button is off, send auto camera switching
+      // TODO SEND OSC
+      OscMessage m = new OscMessage("/video/focus");
+      m.add(0);
+      new SendOSCTask().execute(m);
     }
   }else if(widget == overrideToggle8){ //if it was button1 that was clicked
     if(overrideToggle8.isChecked()){ // Turn off all other buttons and set this focused
       // TODO SEND OSC
+      OscMessage m = new OscMessage("/video/focus");
+      m.add(8);
+      new SendOSCTask().execute(m);
+      
       overrideToggle1.setChecked(false);
       overrideToggle2.setChecked(false);
       overrideToggle3.setChecked(false);
@@ -239,10 +300,20 @@ void onClickWidget(APWidget widget){
       overrideToggle10.setChecked(false);
       overrideToggle11.setChecked(false);
       overrideToggle12.setChecked(false);
+    }
+    else{ // Button is off, send auto camera switching
+      // TODO SEND OSC
+      OscMessage m = new OscMessage("/video/focus");
+      m.add(0);
+      new SendOSCTask().execute(m);
     }
   }else if(widget == overrideToggle9){ //if it was button1 that was clicked
     if(overrideToggle9.isChecked()){ // Turn off all other buttons and set this focused
       // TODO SEND OSC
+      OscMessage m = new OscMessage("/video/focus");
+      m.add(9);
+      new SendOSCTask().execute(m);
+      
       overrideToggle1.setChecked(false);
       overrideToggle2.setChecked(false);
       overrideToggle3.setChecked(false);
@@ -254,10 +325,20 @@ void onClickWidget(APWidget widget){
       overrideToggle10.setChecked(false);
       overrideToggle11.setChecked(false);
       overrideToggle12.setChecked(false);
+    }
+    else{ // Button is off, send auto camera switching
+      // TODO SEND OSC
+      OscMessage m = new OscMessage("/video/focus");
+      m.add(0);
+      new SendOSCTask().execute(m);
     }
   }else if(widget == overrideToggle10){ //if it was button1 that was clicked
     if(overrideToggle10.isChecked()){ // Turn off all other buttons and set this focused
       // TODO SEND OSC
+      OscMessage m = new OscMessage("/video/focus");
+      m.add(10);
+      new SendOSCTask().execute(m);
+      
       overrideToggle1.setChecked(false);
       overrideToggle2.setChecked(false);
       overrideToggle3.setChecked(false);
@@ -269,10 +350,20 @@ void onClickWidget(APWidget widget){
       overrideToggle9.setChecked(false);
       overrideToggle11.setChecked(false);
       overrideToggle12.setChecked(false);
+    }
+    else{ // Button is off, send auto camera switching
+      // TODO SEND OSC
+      OscMessage m = new OscMessage("/video/focus");
+      m.add(0);
+      new SendOSCTask().execute(m);
     }
   }else if(widget == overrideToggle11){ //if it was button1 that was clicked
     if(overrideToggle11.isChecked()){ // Turn off all other buttons and set this focused
       // TODO SEND OSC
+      OscMessage m = new OscMessage("/video/focus");
+      m.add(11);
+      new SendOSCTask().execute(m);
+      
       overrideToggle1.setChecked(false);
       overrideToggle2.setChecked(false);
       overrideToggle3.setChecked(false);
@@ -285,9 +376,19 @@ void onClickWidget(APWidget widget){
       overrideToggle10.setChecked(false);
       overrideToggle12.setChecked(false);
     }
+    else{ // Button is off, send auto camera switching
+      // TODO SEND OSC
+      OscMessage m = new OscMessage("/video/focus");
+      m.add(0);
+      new SendOSCTask().execute(m);
+    }
   }else if(widget == overrideToggle12){ //if it was button1 that was clicked
     if(overrideToggle12.isChecked()){ // Turn off all other buttons and set this focused
       // TODO SEND OSC
+      OscMessage m = new OscMessage("/video/focus");
+      m.add(12);
+      new SendOSCTask().execute(m);
+      
       overrideToggle1.setChecked(false);
       overrideToggle2.setChecked(false);
       overrideToggle3.setChecked(false);
@@ -299,6 +400,12 @@ void onClickWidget(APWidget widget){
       overrideToggle9.setChecked(false);
       overrideToggle10.setChecked(false);
       overrideToggle11.setChecked(false);
+    }
+    else{ // Button is off, send auto camera switching
+      // TODO SEND OSC
+      OscMessage m = new OscMessage("/video/focus");
+      m.add(0);
+      new SendOSCTask().execute(m);
     }
   }
   
@@ -307,29 +414,18 @@ void onClickWidget(APWidget widget){
 private class SendOSCTask extends AsyncTask<OscMessage, Void, String> {
   protected String doInBackground(OscMessage... Messages) {
     for (OscMessage message : Messages) {
-
+ 
       oscP5.send(message, new NetAddress(serverIP, 12000));
       println("Sending: " + message.addrPattern());
     }
-
+ 
     return "done";
   }
   protected void onProgressUpdate() {
     // setProgressPercent(progress[0]);
   }
-
+ 
   protected void onPostExecute() {
     // showDialog("Downloaded " + result + " bytes");
   }
-}
-
-void oscEvent(OscMessage theOscMessage) {
-  if (theOscMessage.checkAddrPattern("/scene/change")==true) {
-    //int scene = theOscMessage.get(0).intValue();
-    //tabStrip.switchToTab(scene);
-  }
- // println("ass");
-  //pass to active tab
-  //tabStrip.getActivePanel().oscReceive(theOscMessage);
-  //shipControls.oscReceive(theOscMessage);
 }
