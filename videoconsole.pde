@@ -8,7 +8,7 @@ import android.view.MotionEvent;
 OscP5 oscP5;
 
 NetAddress myRemoteLocation;                            
-String serverIP = "10.0.0.100"; 
+String serverIP = "192.168.1.12"; 
 
 APWidgetContainer widgetContainer; 
 APButton button1;
@@ -97,16 +97,16 @@ void setup(){
   line(0, 495, 480, 495);
   
   textSize(20);
-  text("Override Focus", 160, 515);
+  text("Override Focus", 162, 515);
   
   //widgetContainer = new APWidgetContainer(this); //create new container for widgets
   overrideToggle1 = new APToggleButton(70, 520, 100, 70, "Pilot\r\nCam"); 
   widgetContainer.addWidget(overrideToggle1);
-  overrideToggle2 = new APToggleButton(180, 520, 100, 70, "Tactical\r\nCam");
+  overrideToggle2 = new APToggleButton(290, 520, 100, 70, "Tactical\r\nCam");
   widgetContainer.addWidget(overrideToggle2);
-  overrideToggle3 = new APToggleButton(290, 520, 100, 70, "Engineering\r\nCam");
+  overrideToggle3 = new APToggleButton(70, 680, 100, 70, "Engineering\r\nCam");
   widgetContainer.addWidget(overrideToggle3);
-  overrideToggle4 = new APToggleButton(70, 680, 100, 70, "Cabin\r\nCam");
+  overrideToggle4 = new APToggleButton(180, 600, 100, 70, "Cabin\r\nCam");
   widgetContainer.addWidget(overrideToggle4);
   overrideToggle5 = new APToggleButton(290, 680, 100, 70, "Captain\r\nCam");
   widgetContainer.addWidget(overrideToggle5);
