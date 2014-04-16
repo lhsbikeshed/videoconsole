@@ -206,12 +206,12 @@ void onClickWidget(APWidget widget){
     }
   }else if(widget == button1){ //if it was button1 that was clicked
     // TODO SEND OSC
-    OscMessage m = new OscMessage("/video/system");
+    OscMessage m = new OscMessage("/system");
     m.add(1);
     new SendOSCTask().execute(m);
   }else if(widget == button2){ //if it was button1 that was clicked
     // TODO SEND OSC
-    OscMessage m = new OscMessage("/video/system");
+    OscMessage m = new OscMessage("/system");
     m.add(0);
     new SendOSCTask().execute(m);
   }else if(widget == audioToggle1){ //if it was button1 that was clicked
@@ -234,27 +234,27 @@ void onClickWidget(APWidget widget){
     new SendOSCTask().execute(m);
   }else if(widget == feedRestartButton1){ //if it was button1 that was clicked
     // TODO SEND OSC
-    OscMessage m = new OscMessage("/feed/restart/");
+    OscMessage m = new OscMessage("/feed/restart");
     m.add(1);
     new SendOSCTask().execute(m);
   }else if(widget == feedRestartButton2){ //if it was button1 that was clicked
     // TODO SEND OSC
-    OscMessage m = new OscMessage("/feed/restart/");
+    OscMessage m = new OscMessage("/feed/restart");
     m.add(2);
     new SendOSCTask().execute(m);
   }else if(widget == feedRestartButton3){ //if it was button1 that was clicked
     // TODO SEND OSC
-    OscMessage m = new OscMessage("/feed/restart/");
+    OscMessage m = new OscMessage("/feed/restart");
     m.add(3);
     new SendOSCTask().execute(m);
   }else if(widget == feedRestartButton4){ //if it was button1 that was clicked
     // TODO SEND OSC
-    OscMessage m = new OscMessage("/feed/restart/");
+    OscMessage m = new OscMessage("/feed/restart");
     m.add(4);
     new SendOSCTask().execute(m);
   }else if(widget == feedRestartButton5){ //if it was button1 that was clicked
     // TODO SEND OSC
-    OscMessage m = new OscMessage("/feed/restart/");
+    OscMessage m = new OscMessage("/feed/restart");
     m.add(5);
     new SendOSCTask().execute(m);
   }else if(widget == screenToggle1){ //if it was button1 that was clicked
