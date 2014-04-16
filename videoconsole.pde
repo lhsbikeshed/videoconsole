@@ -61,22 +61,25 @@ void setup(){
   feedRestartButton5 = new APButton(380, 110, 80, 70, "Cap\r\nCam"); 
   widgetContainer.addWidget(feedRestartButton5);
   
+  textSize(15);
+  text("Restart Feeds", 180, 200);
+  
   stroke(255,255,255);
-  line(0, 190, 480, 190);
+  line(0, 210, 480, 210);
   
   
   textSize(20);
-  text("Status messages:", 20, 220);
+  text("Status messages:", 20, 230);
   
   
   
   stroke(255,255,255);
   line(0, 375, 480, 375);
   
-  screenToggle3 = new APToggleButton(20, 400, 100, 70, "START\r\nSCREEN"); 
-  widgetContainer.addWidget(screenToggle3);
-  screenToggle3 = new APToggleButton(130, 400, 200, 70, "T  E  C  H  N  I  C  A  L\r\nD  I  F  F  I  C  U  L  T  I  E  S"); 
-  widgetContainer.addWidget(screenToggle3);
+  screenToggle1 = new APToggleButton(20, 400, 100, 70, "START\r\nSCREEN"); 
+  widgetContainer.addWidget(screenToggle1);
+  screenToggle2 = new APToggleButton(130, 400, 200, 70, "T  E  C  H  N  I  C  A  L\r\nD  I  F  F  I  C  U  L  T  I  E  S"); 
+  widgetContainer.addWidget(screenToggle2);
   screenToggle3 = new APToggleButton(340, 400, 100, 70, "END\r\nSCREEN"); 
   widgetContainer.addWidget(screenToggle3);
   
@@ -211,6 +214,97 @@ void onClickWidget(APWidget widget){
     OscMessage m = new OscMessage("/video/system");
     m.add(0);
     new SendOSCTask().execute(m);
+  }else if(widget == audioToggle1){ //if it was button1 that was clicked
+    // TODO SEND OSC
+    OscMessage m = new OscMessage("/audio/mic1");
+    if(audioToggle1.isChecked()){
+      m.add(0);
+    }else{
+      m.add(1);
+    }
+    new SendOSCTask().execute(m);
+  }else if(widget == streamingToggle1){ //if it was button1 that was clicked
+    // TODO SEND OSC
+    OscMessage m = new OscMessage("/streaming/ustream");
+    if(audioToggle1.isChecked()){
+      m.add(1);
+    }else{
+      m.add(0);
+    }
+    new SendOSCTask().execute(m);
+  }else if(widget == feedRestartButton1){ //if it was button1 that was clicked
+    // TODO SEND OSC
+    OscMessage m = new OscMessage("/feed/restart/");
+    m.add(1);
+    new SendOSCTask().execute(m);
+  }else if(widget == feedRestartButton2){ //if it was button1 that was clicked
+    // TODO SEND OSC
+    OscMessage m = new OscMessage("/feed/restart/");
+    m.add(2);
+    new SendOSCTask().execute(m);
+  }else if(widget == feedRestartButton3){ //if it was button1 that was clicked
+    // TODO SEND OSC
+    OscMessage m = new OscMessage("/feed/restart/");
+    m.add(3);
+    new SendOSCTask().execute(m);
+  }else if(widget == feedRestartButton4){ //if it was button1 that was clicked
+    // TODO SEND OSC
+    OscMessage m = new OscMessage("/feed/restart/");
+    m.add(4);
+    new SendOSCTask().execute(m);
+  }else if(widget == feedRestartButton5){ //if it was button1 that was clicked
+    // TODO SEND OSC
+    OscMessage m = new OscMessage("/feed/restart/");
+    m.add(5);
+    new SendOSCTask().execute(m);
+  }else if(widget == screenToggle1){ //if it was button1 that was clicked
+    if(screenToggle1.isChecked()){ // Turn off all other buttons and set this focused
+      // TODO SEND OSC
+      OscMessage m = new OscMessage("/screen/focus");
+      m.add(1);
+      new SendOSCTask().execute(m);
+      
+      screenToggle2.setChecked(false);
+      screenToggle3.setChecked(false);
+    }
+    else{ // Button is off, send auto camera switching
+      // TODO SEND OSC
+      OscMessage m = new OscMessage("/screen/focus");
+      m.add(0);
+      new SendOSCTask().execute(m);
+    }
+  }else if(widget == screenToggle2){ //if it was button1 that was clicked
+    if(screenToggle2.isChecked()){ // Turn off all other buttons and set this focused
+      // TODO SEND OSC
+      OscMessage m = new OscMessage("/screen/focus");
+      m.add(2);
+      new SendOSCTask().execute(m);
+      
+      screenToggle1.setChecked(false);
+      screenToggle3.setChecked(false);
+    }
+    else{ // Button is off, send auto camera switching
+      // TODO SEND OSC
+      OscMessage m = new OscMessage("/screen/focus");
+      m.add(0);
+      new SendOSCTask().execute(m);
+    }
+  }else if(widget == screenToggle3){ //if it was button1 that was clicked
+    if(screenToggle3.isChecked()){ // Turn off all other buttons and set this focused
+      // TODO SEND OSC
+      OscMessage m = new OscMessage("/screen/focus");
+      m.add(3);
+      new SendOSCTask().execute(m);
+      
+      screenToggle1.setChecked(false);
+      screenToggle2.setChecked(false);
+    }
+    else{ // Button is off, send auto camera switching
+      // TODO SEND OSC
+      OscMessage m = new OscMessage("/screen/focus");
+      m.add(0);
+      new SendOSCTask().execute(m);
+    }
   }
   
 }
