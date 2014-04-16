@@ -11,87 +11,74 @@ NetAddress myRemoteLocation;
 String serverIP = "192.168.1.12"; 
 
 APWidgetContainer widgetContainer; 
+APButton feedRestartButton1;
+APButton feedRestartButton2;
+APButton feedRestartButton3;
+APButton feedRestartButton4;
+APButton feedRestartButton5;
 APButton button1;
 APButton button2;
-APButton button3;
-APButton button4;
 APToggleButton streamingToggle1;
-APToggleButton streamingToggle2;
-APToggleButton streamingToggle3;
-APToggleButton streamingToggle4;
 APToggleButton audioToggle1;
-APToggleButton audioToggle2;
-APToggleButton audioToggle3;
-APToggleButton audioToggle4;
-APToggleButton techdiffToggle;
+APToggleButton screenToggle1;
+APToggleButton screenToggle2;
+APToggleButton screenToggle3;
 APToggleButton overrideToggle1;
 APToggleButton overrideToggle2;
 APToggleButton overrideToggle3;
 APToggleButton overrideToggle4;
 APToggleButton overrideToggle5;
 
-APRadioGroup radioGroup;
 
 void setup(){
   
   orientation(PORTRAIT);
   background(0);
   
-  oscP5 = new OscP5(this, 12005);
+  oscP5 = new OscP5(this, 12010);
   
   widgetContainer = new APWidgetContainer(this); //create new container for widgets
   button1 = new APButton(20, 20, 100, 70, "Start\r\nSystem"); 
   widgetContainer.addWidget(button1);
-  button2 = new APButton(130, 20, 100, 70, "Stop\r\nSystem");
+  audioToggle1 = new APToggleButton(130, 20, 100, 70, "Cabin Mic\r\nMute"); 
+  widgetContainer.addWidget(audioToggle1);
+  streamingToggle1 = new APToggleButton(240, 20, 100, 70, "UStream\r\nStream"); 
+  widgetContainer.addWidget(streamingToggle1);
+  button2 = new APButton(350, 20, 100, 70, "Stop\r\nSystem");
   widgetContainer.addWidget(button2);
-  button3 = new APButton(240, 20, 100, 70, "Force Start Sequence");
-  widgetContainer.addWidget(button3);
-  button4 = new APButton(350, 20, 100, 70, "Force End Sequence");
-  widgetContainer.addWidget(button4);
   
   stroke(255,255,255);
   line(0, 100, 480, 100);
   
-  streamingToggle1 = new APToggleButton(20, 110, 100, 70, "YouTube\r\nStream"); 
-  widgetContainer.addWidget(streamingToggle1);
-  streamingToggle2 = new APToggleButton(130, 110, 100, 70, "UStream\r\nStream");
-  widgetContainer.addWidget(streamingToggle2);
-  streamingToggle3 = new APToggleButton(240, 110, 100, 70, "Twitch\r\nStream");
-  widgetContainer.addWidget(streamingToggle3);
-  streamingToggle4 = new APToggleButton(350, 110, 100, 70, "Other\r\nStream");
-  widgetContainer.addWidget(streamingToggle4);
-  
-  textSize(10);
-  text("Offline", 20, 190);
-  text("Connecting", 130, 190);
-  text("Online", 240, 190);
-  text("Error", 350, 190);
+  feedRestartButton1 = new APButton(20, 110, 80, 70, "Pilot\r\nCam"); 
+  widgetContainer.addWidget(feedRestartButton1);
+  feedRestartButton2 = new APButton(110, 110, 80, 70, "Tact\r\nCam"); 
+  widgetContainer.addWidget(feedRestartButton2);
+  feedRestartButton3 = new APButton(200, 110, 80, 70, "Engi\r\nCam"); 
+  widgetContainer.addWidget(feedRestartButton3);
+  feedRestartButton4 = new APButton(290, 110, 80, 70, "Cabin\r\nCam"); 
+  widgetContainer.addWidget(feedRestartButton4);
+  feedRestartButton5 = new APButton(380, 110, 80, 70, "Cap\r\nCam"); 
+  widgetContainer.addWidget(feedRestartButton5);
   
   stroke(255,255,255);
-  line(0, 200, 480, 200);
+  line(0, 190, 480, 190);
   
-  audioToggle1 = new APToggleButton(20, 210, 100, 70, "Mic 1\r\nMute"); 
-  widgetContainer.addWidget(audioToggle1);
-  audioToggle2 = new APToggleButton(130, 210, 100, 70, "Mic 2\r\nMute");
-  widgetContainer.addWidget(audioToggle2);
-  audioToggle3 = new APToggleButton(240, 210, 100, 70, "Mic 3\r\nMute");
-  widgetContainer.addWidget(audioToggle3);
-  audioToggle4 = new APToggleButton(350, 210, 100, 70, "Main Game\r\nMute");
-  widgetContainer.addWidget(audioToggle4);
-  
-  stroke(255,255,255);
-  line(0, 290, 480, 290);
   
   textSize(20);
-  text("Status messages:", 20, 320);
+  text("Status messages:", 20, 220);
   
   
   
   stroke(255,255,255);
   line(0, 375, 480, 375);
   
-  techdiffToggle = new APToggleButton(20, 400, 430, 70, "T  E  C  H  N  I  C  A  L    D  I  F  F  I  C  U  L  T  I  E  S"); 
-  widgetContainer.addWidget(techdiffToggle);
+  screenToggle3 = new APToggleButton(20, 400, 100, 70, "START\r\nSCREEN"); 
+  widgetContainer.addWidget(screenToggle3);
+  screenToggle3 = new APToggleButton(130, 400, 200, 70, "T  E  C  H  N  I  C  A  L\r\nD  I  F  F  I  C  U  L  T  I  E  S"); 
+  widgetContainer.addWidget(screenToggle3);
+  screenToggle3 = new APToggleButton(340, 400, 100, 70, "END\r\nSCREEN"); 
+  widgetContainer.addWidget(screenToggle3);
   
   stroke(255,255,255);
   line(0, 495, 480, 495);
@@ -223,16 +210,6 @@ void onClickWidget(APWidget widget){
     // TODO SEND OSC
     OscMessage m = new OscMessage("/video/system");
     m.add(0);
-    new SendOSCTask().execute(m);
-  }else if(widget == button3){ //if it was button1 that was clicked
-    // TODO SEND OSC
-    OscMessage m = new OscMessage("/video/playSequence");
-    m.add(1);
-    new SendOSCTask().execute(m);
-  }else if(widget == button4){ //if it was button1 that was clicked
-    // TODO SEND OSC
-    OscMessage m = new OscMessage("/video/playSequence");
-    m.add(2);
     new SendOSCTask().execute(m);
   }
   
