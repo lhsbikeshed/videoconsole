@@ -8,7 +8,7 @@ import android.view.MotionEvent;
 OscP5 oscP5;
 
 NetAddress myRemoteLocation;                            
-String serverIP = "192.168.1.12"; 
+String serverIP = "10.0.0.50"; 
 
 APWidgetContainer widgetContainer; 
 APButton feedRestartButton1;
@@ -38,68 +38,59 @@ void setup(){
   oscP5 = new OscP5(this, 12010);
   
   widgetContainer = new APWidgetContainer(this); //create new container for widgets
-  button1 = new APButton(20, 20, 100, 70, "Start\r\nSystem"); 
-  widgetContainer.addWidget(button1);
-  audioToggle1 = new APToggleButton(130, 20, 100, 70, "Cabin Mic\r\nMute"); 
-  widgetContainer.addWidget(audioToggle1);
-  streamingToggle1 = new APToggleButton(240, 20, 100, 70, "UStream\r\nStream"); 
-  widgetContainer.addWidget(streamingToggle1);
-  button2 = new APButton(350, 20, 100, 70, "Stop\r\nSystem");
-  widgetContainer.addWidget(button2);
-  
-  stroke(255,255,255);
-  line(0, 100, 480, 100);
-  
-  feedRestartButton1 = new APButton(20, 110, 80, 70, "Pilot\r\nCam"); 
-  widgetContainer.addWidget(feedRestartButton1);
-  feedRestartButton2 = new APButton(110, 110, 80, 70, "Tact\r\nCam"); 
-  widgetContainer.addWidget(feedRestartButton2);
-  feedRestartButton3 = new APButton(200, 110, 80, 70, "Engi\r\nCam"); 
-  widgetContainer.addWidget(feedRestartButton3);
-  feedRestartButton4 = new APButton(290, 110, 80, 70, "Cabin\r\nCam"); 
-  widgetContainer.addWidget(feedRestartButton4);
-  feedRestartButton5 = new APButton(380, 110, 80, 70, "Cap\r\nCam"); 
-  widgetContainer.addWidget(feedRestartButton5);
-  
-  textSize(15);
-  text("Restart Feeds", 180, 200);
-  
-  stroke(255,255,255);
-  line(0, 210, 480, 210);
-  
-  
-  textSize(20);
-  text("Status messages:", 20, 230);
-  
-  
-  
-  stroke(255,255,255);
-  line(0, 375, 480, 375);
-  
-  screenToggle1 = new APToggleButton(20, 400, 100, 70, "START\r\nSCREEN"); 
+  screenToggle1 = new APToggleButton(20, 20, 100, 70, "START\r\nSCREEN"); 
   widgetContainer.addWidget(screenToggle1);
-  screenToggle2 = new APToggleButton(130, 400, 200, 70, "T  E  C  H  N  I  C  A  L\r\nD  I  F  F  I  C  U  L  T  I  E  S"); 
+  screenToggle2 = new APToggleButton(130, 20, 200, 70, "T  E  C  H  N  I  C  A  L\r\nD  I  F  F  I  C  U  L  T  I  E  S"); 
   widgetContainer.addWidget(screenToggle2);
-  screenToggle3 = new APToggleButton(340, 400, 100, 70, "END\r\nSCREEN"); 
+  screenToggle3 = new APToggleButton(340, 20, 100, 70, "END\r\nSCREEN"); 
   widgetContainer.addWidget(screenToggle3);
   
   stroke(255,255,255);
-  line(0, 495, 480, 495);
+  line(0, 115, 480, 115);
   
   textSize(20);
-  text("Override Focus", 162, 515);
+  text("Override Focus", 162, 135);
   
   //widgetContainer = new APWidgetContainer(this); //create new container for widgets
-  overrideToggle1 = new APToggleButton(70, 520, 100, 70, "Pilot\r\nCam"); 
+  overrideToggle1 = new APToggleButton(70, 140, 100, 70, "Pilot\r\nCam"); 
   widgetContainer.addWidget(overrideToggle1);
-  overrideToggle2 = new APToggleButton(290, 520, 100, 70, "Tactical\r\nCam");
+  overrideToggle2 = new APToggleButton(290, 140, 100, 70, "Tactical\r\nCam");
   widgetContainer.addWidget(overrideToggle2);
-  overrideToggle3 = new APToggleButton(70, 680, 100, 70, "Engineering\r\nCam");
+  overrideToggle3 = new APToggleButton(70, 300, 100, 70, "Engineering\r\nCam");
   widgetContainer.addWidget(overrideToggle3);
-  overrideToggle4 = new APToggleButton(180, 600, 100, 70, "Cabin\r\nCam");
+  overrideToggle4 = new APToggleButton(180, 220, 100, 70, "Cabin\r\nCam");
   widgetContainer.addWidget(overrideToggle4);
-  overrideToggle5 = new APToggleButton(290, 680, 100, 70, "Captain\r\nCam");
+  overrideToggle5 = new APToggleButton(290, 300, 100, 70, "Captain\r\nCam");
   widgetContainer.addWidget(overrideToggle5);
+  
+  
+  
+  
+  button1 = new APButton(20, 570, 100, 70, "Start\r\nSystem"); 
+  widgetContainer.addWidget(button1);
+  audioToggle1 = new APToggleButton(130, 570, 100, 70, "Cabin Mic\r\nMute"); 
+  widgetContainer.addWidget(audioToggle1);
+  streamingToggle1 = new APToggleButton(240, 570, 100, 70, "UStream\r\nStream"); 
+  widgetContainer.addWidget(streamingToggle1);
+  button2 = new APButton(350, 570, 100, 70, "Stop\r\nSystem");
+  widgetContainer.addWidget(button2);
+  
+  stroke(255,255,255);
+  line(0, 650, 480, 650);
+  
+  feedRestartButton1 = new APButton(20, 660, 80, 70, "Pilot\r\nCam"); 
+  widgetContainer.addWidget(feedRestartButton1);
+  feedRestartButton2 = new APButton(110, 660, 80, 70, "Tact\r\nCam"); 
+  widgetContainer.addWidget(feedRestartButton2);
+  feedRestartButton3 = new APButton(200, 660, 80, 70, "Engi\r\nCam"); 
+  widgetContainer.addWidget(feedRestartButton3);
+  feedRestartButton4 = new APButton(290, 660, 80, 70, "Cabin\r\nCam"); 
+  widgetContainer.addWidget(feedRestartButton4);
+  feedRestartButton5 = new APButton(380, 660, 80, 70, "Cap\r\nCam"); 
+  widgetContainer.addWidget(feedRestartButton5);
+  
+  textSize(15);
+  text("Restart Feeds", 180, 750);
 }
 
 /*void draw(){
